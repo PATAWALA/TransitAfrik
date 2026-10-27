@@ -1,66 +1,44 @@
 import { QuoteForm } from "@/components/QuoteForm";
 import Image from "next/image";
-import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 export function Hero() {
   return (
-    <section className="relative w-full border-b border-slate-800 overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-ship.jpg"
-          alt="Fret maritime"
-          fill
-          className="object-cover opacity-30"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-bg-dark via-bg-dark/95 to-bg-dark/40" />
-      </div>
-
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+    <section className="relative w-full border-b border-slate-800 bg-surface">
+      <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+        
+        {/* TEXTE À GAUCHE - Simplifié */}
         <div>
-          <div className="inline-flex items-center gap-2 bg-brand-red/20 border border-brand-red text-brand-red text-xs font-bold uppercase tracking-widest px-3 py-1.5 mb-6">
-            <span className="h-2 w-2 bg-brand-red animate-pulse" />
-            +500 conteneurs expédiés cette année
-          </div>
-
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-black uppercase text-white leading-[1.1] mb-6">
-            Importez de Chine, <br />
-            Dubai ou Turquie <br />
+          <h1 className="text-4xl md:text-5xl font-black uppercase text-white leading-[1.1] mb-4">
+            Importez de Chine,<br />
+            Dubai ou Turquie<br />
             <span className="text-brand-red">Sans stress.</span>
           </h1>
 
-          <p className="text-slate-300 text-lg mb-8 max-w-lg">
-            Nous gérons l'achat, le transport maritime/aérien et le dédouanement jusqu'à votre porte en Afrique. Devis gratuit en 2 minutes.
+          <p className="text-slate-400 text-lg mb-8 max-w-md">
+            Transport maritime, aérien et dédouanement jusqu'à votre porte en Afrique. Devis gratuit en 2 minutes.
           </p>
 
-          <ul className="space-y-3 mb-8">
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <CheckCircle2 size={18} className="text-brand-red" /> Dédouanement 100% inclus (pas de frais cachés)
-            </li>
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <CheckCircle2 size={18} className="text-brand-red" /> Suivi de votre colis en temps réel sur WhatsApp
-            </li>
-            <li className="flex items-center gap-3 text-sm text-slate-200">
-              <CheckCircle2 size={18} className="text-brand-red" /> Marchandises sensibles acceptées (électronique, cosmétiques)
-            </li>
-          </ul>
-
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Nous livrons en :</p>
-            <div className="flex flex-wrap gap-2">
-              <span className="bg-surface border border-slate-700 px-3 py-1 text-xs font-bold text-white">Bénin</span>
-              <span className="bg-surface border border-slate-700 px-3 py-1 text-xs font-bold text-white">Togo</span>
-              <span className="bg-surface border border-slate-700 px-3 py-1 text-xs font-bold text-white">Côte d'Ivoire</span>
-              <span className="bg-surface border border-slate-700 px-3 py-1 text-xs font-bold text-white">Sénégal</span>
-              <span className="bg-surface border border-slate-700 px-3 py-1 text-xs font-bold text-white">Burkina</span>
-            </div>
+          {/* BOUTON D'ACTION BIEN VISIBLE */}
+          <div className="flex gap-4">
+            <Link 
+              href="/#devis" 
+              className="bg-brand-red text-white font-bold uppercase tracking-wider px-8 py-4 hover:bg-red-700 transition-colors"
+            >
+              Obtenir un devis
+            </Link>
+            <Link 
+              href="/services" 
+              className="border border-slate-700 text-white font-bold uppercase tracking-wider px-8 py-4 hover:border-brand-red hover:text-brand-red transition-colors"
+            >
+              Voir les services
+            </Link>
           </div>
         </div>
 
-        <div id="devis" className="w-full md:pl-8">
-          <div className="bg-surface/90 backdrop-blur border border-slate-700 p-1 shadow-2xl shadow-brand-red/10">
-            <QuoteForm />
-          </div>
+        {/* FORMULAIRE À DROITE */}
+        <div id="devis" className="w-full">
+          <QuoteForm />
         </div>
       </div>
     </section>
