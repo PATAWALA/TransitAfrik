@@ -32,7 +32,8 @@ export function ServiceCard({ origin, delay, features, highlight = false }: Serv
       </ul>
 
       <div className="mt-auto pt-4 border-t border-slate-700">
-        <Link href="/#devis" className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-brand-red hover:text-white transition-colors">
+        {/* BOUTON ROUGE EN PERMANENCE */}
+        <Link href="/#devis" className="inline-flex items-center gap-2 bg-brand-red text-white text-xs font-bold uppercase tracking-wider px-4 py-2 transition-colors hover:bg-red-700">
           Obtenir un devis <ArrowRight size={14} />
         </Link>
       </div>

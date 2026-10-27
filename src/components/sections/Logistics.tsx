@@ -6,15 +6,12 @@ export function Logistics() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="flex flex-col md:flex-row gap-10 items-center mb-16 border border-slate-800 bg-surface p-6 md:p-10">
-        
-        {/* BLOC VISUEL AVEC IMAGE EN LIGNE */}
         <div 
           className="w-full md:w-1/2 relative h-64 md:h-80 border border-slate-700 bg-slate-800 bg-cover bg-center flex items-center justify-center"
           style={{ 
             backgroundImage: "url('https://images.unsplash.com/photo-1586528116311-ad8ed7c508b0?q=80&w=800&auto=format&fit=crop')" 
           }}
         >
-           {/* Voile sombre pour l'icône */}
            <div className="absolute inset-0 bg-black/50" />
            <Truck size={100} className="text-white relative z-10 opacity-80" />
         </div>
@@ -25,7 +22,8 @@ export function Logistics() {
             De l'achat en Chine, à la consolidation à Dubai, jusqu'au dédouanement à Cotonou.
             Un seul interlocuteur, un suivi total.
           </p>
-          <Link href="/services" className="inline-flex items-center gap-2 bg-brand-red text-white font-bold uppercase tracking-wider px-6 py-3 hover:bg-red-700 transition-colors">
+          {/* BOUTON ROUGE EN PERMANENCE */}
+          <Link href="/services" className="inline-flex items-center gap-2 bg-brand-red text-white font-bold uppercase tracking-wider px-6 py-3 transition-colors hover:bg-red-700">
             Voir tous nos services <span className="text-lg">→</span>
           </Link>
         </div>
