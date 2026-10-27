@@ -1,32 +1,30 @@
-/* Tailwind CSS v4 new syntax */
 @import "tailwindcss";
 
-/* ===== ZÉRO ARRONDI PARTOUT ===== */
+/* CONFIGURATION DES COULEURS POUR TAILWIND V4 */
+@theme {
+  --color-brand-navy: #0B1B3D;
+  --color-brand-red: #E31E24;
+  --color-brand-yellow: #F5A623;
+  --color-surface: #0F172A;
+  --color-bg-dark: #060B19;
+}
+
+/* ZÉRO ARRONDI PARTOUT */
 *,
 *::before,
 *::after {
   border-radius: 0 !important;
 }
 
-:root {
-  --bg: #060B19;
-  --surface: #0F172A;
-  --border: #1E293B;
-  --text: #F8FAFC;
-  --muted: #94A3B8;
-  --accent: #E31E24;
-  --accent-hover: #BE123C;
-}
-
 html,
 body {
-  background: var(--bg);
-  color: var(--text);
+  background-color: var(--color-bg-dark);
+  color: #F8FAFC;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--accent);
+  background-color: var(--color-brand-red);
   color: #fff;
 }
