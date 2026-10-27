@@ -38,7 +38,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-slate-800 pt-8 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} TransitAfrik. Tous droits réservés.
+        © 2026 TransitAfrik. Tous droits réservés.
       </div>
     </footer>
   );
