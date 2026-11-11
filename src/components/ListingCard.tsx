@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Car, Package } from "lucide-react";
 import { StatusBadge } from "./StatusBadge";
 import { formatPrice, type Listing } from "@/lib/types";
+import { isDemo } from "@/lib/demo-data";
 
 export function listingHref(l: Pick<Listing, "kind" | "slug">) {
   return `${l.kind === "vehicle" ? "/vehicules" : "/marchandises"}/${l.slug}`;
@@ -41,7 +42,7 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
         <div className="absolute left-3 top-3">
           <StatusBadge status={l.status} />
         </div>
-        {l.id.startsWith("d") && l.id.length === 2 && (
+        {isDemo(l) && (
           <span className="absolute right-3 top-3 rounded-full bg-black/70 px-2 py-1 text-[10px] font-bold uppercase text-slate-300">
             Exemple
           </span>

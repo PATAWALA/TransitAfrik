@@ -5,7 +5,8 @@ export const BRAND = {
   whatsappNumber: "15038669227",
   tiktok: "https://www.tiktok.com/@afriktransit1",
   tiktokHandle: "@afriktransit1",
-  community: "https://chat.whatsapp.com/FpsGZwzGDhtDk",
+  // Lien du groupe WhatsApp : à renseigner quand le client le fournit (les boutons associés apparaissent alors).
+  community: null as string | null,
   origins: ["Chine", "Dubaï (Émirats)", "Turquie"],
 } as const;
 

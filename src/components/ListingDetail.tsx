@@ -5,6 +5,7 @@ import { StatusBadge } from "./StatusBadge";
 import { ListingCard } from "./ListingCard";
 import { BRAND, waLink } from "@/lib/brand";
 import { formatPrice, type Listing } from "@/lib/types";
+import { isDemo } from "@/lib/demo-data";
 
 export function ListingDetail({ listing: l, similar }: { listing: Listing; similar: Listing[] }) {
   const isVehicle = l.kind === "vehicle";
@@ -41,6 +42,7 @@ export function ListingDetail({ listing: l, similar }: { listing: Listing; simil
         <div className="lg:col-span-2 flex flex-col gap-5">
           <div>
             <StatusBadge status={l.status} />
+            {isDemo(l) && <span className="ml-2 rounded-full bg-black/70 px-2.5 py-1 text-[10px] font-bold uppercase text-slate-300">Annonce d&apos;exemple</span>}
             <h1 className="mt-3 font-display text-4xl font-extrabold uppercase leading-tight">{l.title}</h1>
             <p className={`mt-2 text-3xl font-black ${sold ? "text-slate-500 line-through" : "text-brand-red"}`}>
               {formatPrice(l.price, l.currency)}

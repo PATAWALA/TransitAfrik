@@ -10,8 +10,7 @@ export function isDbConfigured() {
   return Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
 }
 
-const useDemo = () =>
-  !isDbConfigured() && (process.env.NODE_ENV === "development" || process.env.DEMO_DATA === "true");
+const demoAllowed = () => process.env.DEMO_DATA !== "false";
 
 export function adminClient(): SupabaseClient | null {
   if (!isDbConfigured()) return null;
@@ -22,25 +21,22 @@ export function adminClient(): SupabaseClient | null {
   );
 }
 
-/** Liste publique (mise en cache, invalidée à chaque modification depuis l'admin). */
+/** Liste publique (mise en cache, invalidée à chaque modification depuis l'admin).
+ *  Tant que la base ne contient aucune annonce, des annonces d'exemple sont affichées. */
 export async function getListings(kind?: Kind): Promise<Listing[]> {
   "use cache";
   cacheTag(LISTINGS_TAG);
   cacheLife("minutes");
 
+  let all: Listing[] = [];
   const db = adminClient();
-  if (!db) {
-    if (!useDemo()) return [];
-    return DEMO_LISTINGS.filter((l) => !kind || l.kind === kind);
+  if (db) {
+    const { data, error } = await db.from("listings").select("*").order("created_at", { ascending: false });
+    if (error) console.error("getListings", error.message);
+    all = (data ?? []) as Listing[];
   }
-  let q = db.from("listings").select("*").order("created_at", { ascending: false });
-  if (kind) q = q.eq("kind", kind);
-  const { data, error } = await q;
-  if (error) {
-    console.error("getListings", error.message);
-    return [];
-  }
-  return (data ?? []) as Listing[];
+  if (all.length === 0 && demoAllowed()) all = DEMO_LISTINGS;
+  return kind ? all.filter((l) => l.kind === kind) : all;
 }
 
 export async function getListingBySlug(slug: string): Promise<Listing | null> {
@@ -48,10 +44,7 @@ export async function getListingBySlug(slug: string): Promise<Listing | null> {
   cacheTag(LISTINGS_TAG);
   cacheLife("minutes");
 
-  const db = adminClient();
-  if (!db) return useDemo() ? (DEMO_LISTINGS.find((l) => l.slug === slug) ?? null) : null;
-  const { data } = await db.from("listings").select("*").eq("slug", slug).maybeSingle();
-  return (data as Listing | null) ?? null;
+  return (await getListings()).find((l) => l.slug === slug) ?? null;
 }
 
 /** Lectures admin : jamais mises en cache. */
