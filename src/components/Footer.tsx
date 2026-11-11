@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { BRAND } from "@/lib/brand";
+import { BRAND, communityHref } from "@/lib/brand";
 
 export function Footer() {
   return (
@@ -35,9 +35,7 @@ export function Footer() {
           <ul className="space-y-2 text-sm text-slate-400">
             <li>WhatsApp : {BRAND.phoneDisplay}</li>
             <li><a href={BRAND.tiktok} target="_blank" rel="noreferrer" className="hover:text-brand-red">TikTok {BRAND.tiktokHandle}</a></li>
-            {BRAND.community && (
-              <li><a href={BRAND.community} target="_blank" rel="noreferrer" className="hover:text-brand-red">Communauté WhatsApp</a></li>
-            )}
+            <li><a href={communityHref()} target="_blank" rel="noreferrer" className="hover:text-brand-red">Communauté WhatsApp</a></li>
           </ul>
         </div>
       </div>

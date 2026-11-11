@@ -14,6 +14,10 @@ export function waLink(message: string) {
   return `https://wa.me/${BRAND.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+/** Lien du bouton « Communauté » : le lien du groupe s'il est renseigné, sinon le chat WhatsApp. */
+export const communityHref = () =>
+  BRAND.community ?? waLink("Bonjour AfrikTransit, je souhaite rejoindre la communauté WhatsApp.");
+
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL

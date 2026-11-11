@@ -4,7 +4,7 @@ import { ArrowRight, Car, Package, Plane, Ship, ShieldCheck, Truck } from "lucid
 import { ListingCard } from "@/components/ListingCard";
 import { OrderSteps } from "@/components/OrderSteps";
 import { getListings } from "@/lib/db";
-import { BRAND, waLink } from "@/lib/brand";
+import { BRAND, communityHref, waLink } from "@/lib/brand";
 import { IMG } from "@/lib/images";
 
 export default async function Home() {
@@ -118,13 +118,11 @@ export default async function Home() {
       <section className="border-t border-slate-800 bg-brand-navy">
         <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-14 md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="font-display text-3xl font-extrabold uppercase md:text-4xl">Suivez AfrikTransit</h2>
+            <h2 className="font-display text-3xl font-extrabold uppercase md:text-4xl">Rejoignez la communauté AfrikTransit</h2>
             <p className="mt-2 text-slate-300">Nouveautés, arrivages et livraisons en vidéo sur TikTok, suivi de commande sur WhatsApp.</p>
           </div>
           <div className="flex flex-wrap gap-3">
-            {BRAND.community && (
-              <a href={BRAND.community} target="_blank" rel="noreferrer" className="btn-red !bg-green-600 hover:!bg-green-700">Communauté WhatsApp</a>
-            )}
+            <a href={communityHref()} target="_blank" rel="noreferrer" className="btn-red !bg-green-600 hover:!bg-green-700">Rejoindre sur WhatsApp</a>
             <a href={BRAND.tiktok} target="_blank" rel="noreferrer" className="btn-ghost">TikTok</a>
             <a href={waLink("Bonjour AfrikTransit, je souhaite un devis.")} target="_blank" rel="noreferrer" className="btn-ghost">Demander un devis</a>
           </div>

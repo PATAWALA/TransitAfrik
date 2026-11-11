@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Users } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { BRAND, waLink } from "@/lib/brand";
+import { BRAND, communityHref, waLink } from "@/lib/brand";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -21,7 +21,13 @@ export default function ContactPage() {
           <p className="mt-1 text-xl font-bold">{BRAND.phoneDisplay}</p>
           <p className="mt-2 text-sm text-slate-400">Devis, suivi de commande, questions : écrivez-nous directement.</p>
         </a>
-        <a href={BRAND.tiktok} target="_blank" rel="noreferrer" className="rounded-2xl border border-slate-800 bg-surface p-7 hover:border-brand-red transition-colors">
+        <a href={communityHref()} target="_blank" rel="noreferrer" className="rounded-2xl border border-slate-800 bg-surface p-7 hover:border-brand-red transition-colors">
+          <Users className="text-brand-red" size={34} />
+          <h2 className="mt-4 font-display text-2xl font-bold uppercase">Communauté</h2>
+          <p className="mt-1 text-xl font-bold">Groupe WhatsApp</p>
+          <p className="mt-2 text-sm text-slate-400">Nouveautés et arrivages en avant-première.</p>
+        </a>
+        <a href={BRAND.tiktok} target="_blank" rel="noreferrer" className="rounded-2xl border border-slate-800 bg-surface p-7 hover:border-brand-red transition-colors md:col-span-2">
           <h2 className="font-display text-2xl font-bold uppercase">TikTok {BRAND.tiktokHandle}</h2>
           <p className="mt-2 text-sm text-slate-400">Suivez nos livraisons et nos véhicules en vidéo.</p>
         </a>
