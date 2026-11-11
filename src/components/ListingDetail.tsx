@@ -52,7 +52,7 @@ export function ListingDetail({ listing: l, similar }: { listing: Listing; simil
             )}
           </div>
 
-          <dl className="grid grid-cols-2 border border-slate-800 bg-surface">
+          <dl className="grid grid-cols-2 rounded-2xl border border-slate-800 bg-surface">
             {specs.filter(([, v]) => v).map(([k, v]) => (
               <div key={k} className="border-b border-r border-slate-800 p-3">
                 <dt className="text-[10px] font-bold uppercase tracking-wider text-slate-500">{k}</dt>
@@ -62,7 +62,7 @@ export function ListingDetail({ listing: l, similar }: { listing: Listing; simil
           </dl>
 
           {sold ? (
-            <div className="border border-slate-700 bg-surface p-4 text-sm text-slate-300">
+            <div className="rounded-2xl border border-slate-700 bg-surface p-4 text-sm text-slate-300">
               Ce {isVehicle ? "véhicule" : "article"} a été vendu. Contactez-nous : nous pouvons vous en trouver un équivalent.
             </div>
           ) : null}

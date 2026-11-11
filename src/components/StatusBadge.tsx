@@ -8,7 +8,7 @@ const styles: Record<Status, string> = {
 
 export function StatusBadge({ status }: { status: Status }) {
   return (
-    <span className={`inline-block px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${styles[status]}`}>
+    <span className={`inline-block rounded-full px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider ${styles[status]}`}>
       {STATUS_LABEL[status]}
     </span>
   );

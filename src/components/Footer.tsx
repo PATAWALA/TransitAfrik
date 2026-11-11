@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-6xl px-4 grid md:grid-cols-4 gap-10 mb-12">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 mb-4">
-            <Image src="/images/logo.jpeg" alt={`Logo ${BRAND.name}`} width={44} height={44} className="h-11 w-11 object-cover" />
+            <Image src="/images/logo.jpeg" alt={`Logo ${BRAND.name}`} width={44} height={44} className="h-11 w-11 rounded-xl object-cover" />
             <span className="font-display text-2xl font-extrabold uppercase tracking-wide">
               Afrik<span className="text-brand-red">Transit</span>
             </span>

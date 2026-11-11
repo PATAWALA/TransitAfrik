@@ -22,7 +22,7 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
   return (
     <Link
       href={listingHref(l)}
-      className="group flex flex-col border border-slate-800 bg-surface hover:border-brand-red transition-colors"
+      className="group flex flex-col overflow-hidden rounded-2xl border border-slate-800 bg-surface hover:border-brand-red transition-colors"
     >
       <div className="relative aspect-[4/3] bg-slate-900 overflow-hidden">
         {l.images[0] ? (
@@ -42,7 +42,7 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
           <StatusBadge status={l.status} />
         </div>
         {l.id.startsWith("d") && l.id.length === 2 && (
-          <span className="absolute right-3 top-3 bg-black/70 px-2 py-1 text-[10px] font-bold uppercase text-slate-300">
+          <span className="absolute right-3 top-3 rounded-full bg-black/70 px-2 py-1 text-[10px] font-bold uppercase text-slate-300">
             Exemple
           </span>
         )}

@@ -40,7 +40,7 @@ export function Catalog({ listings, kind }: { listings: Listing[]; kind: Kind })
 
   return (
     <div>
-      <div className="grid gap-3 border border-slate-800 bg-surface p-4 md:grid-cols-5">
+      <div className="grid gap-3 rounded-2xl border border-slate-800 bg-surface p-4 md:grid-cols-5">
         <div className="relative md:col-span-2">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
           <input
@@ -75,7 +75,7 @@ export function Catalog({ listings, kind }: { listings: Listing[]; kind: Kind })
           <button
             key={v}
             onClick={() => setStatus(v)}
-            className={`px-4 py-2 border ${status === v ? "border-brand-red bg-brand-red text-white" : "border-slate-700 text-slate-300 hover:border-slate-500"}`}
+            className={`rounded-full px-4 py-2 border ${status === v ? "border-brand-red bg-brand-red text-white" : "border-slate-700 text-slate-300 hover:border-slate-500"}`}
           >
             {label}
           </button>
@@ -86,7 +86,7 @@ export function Catalog({ listings, kind }: { listings: Listing[]; kind: Kind })
       </div>
 
       {shown.length === 0 ? (
-        <p className="mt-10 border border-dashed border-slate-700 p-10 text-center text-slate-400">
+        <p className="mt-10 rounded-2xl border border-dashed border-slate-700 p-10 text-center text-slate-400">
           Aucun résultat pour le moment.
         </p>
       ) : (

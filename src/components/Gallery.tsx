@@ -10,7 +10,7 @@ export function Gallery({ images, title, kind, sold }: { images: string[]; title
 
   if (images.length === 0) {
     return (
-      <div className="flex aspect-[4/3] items-center justify-center bg-slate-900 text-slate-700 border border-slate-800">
+      <div className="flex aspect-[4/3] items-center justify-center bg-slate-900 text-slate-700 rounded-2xl border border-slate-800">
         {kind === "vehicle" ? <Car size={80} /> : <Package size={80} />}
       </div>
     );
@@ -19,7 +19,7 @@ export function Gallery({ images, title, kind, sold }: { images: string[]; title
 
   return (
     <div>
-      <div className="relative aspect-[4/3] bg-slate-900 border border-slate-800 overflow-hidden">
+      <div className="relative aspect-[4/3] bg-slate-900 rounded-2xl border border-slate-800 overflow-hidden">
         <Image
           src={images[i]}
           alt={`${title} — photo ${i + 1}`}
@@ -30,10 +30,10 @@ export function Gallery({ images, title, kind, sold }: { images: string[]; title
         />
         {images.length > 1 && (
           <>
-            <button onClick={() => go(-1)} aria-label="Photo précédente" className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 hover:bg-brand-red">
+            <button onClick={() => go(-1)} aria-label="Photo précédente" className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-2 hover:bg-brand-red">
               <ChevronLeft />
             </button>
-            <button onClick={() => go(1)} aria-label="Photo suivante" className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/60 p-2 hover:bg-brand-red">
+            <button onClick={() => go(1)} aria-label="Photo suivante" className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-2 hover:bg-brand-red">
               <ChevronRight />
             </button>
           </>
@@ -46,7 +46,7 @@ export function Gallery({ images, title, kind, sold }: { images: string[]; title
               key={src}
               onClick={() => setI(idx)}
               aria-label={`Voir photo ${idx + 1}`}
-              className={`relative aspect-square border ${idx === i ? "border-brand-red" : "border-slate-800 opacity-70 hover:opacity-100"}`}
+              className={`relative aspect-square overflow-hidden rounded-xl border ${idx === i ? "border-brand-red" : "border-slate-800 opacity-70 hover:opacity-100"}`}
             >
               <Image src={src} alt="" fill sizes="100px" className="object-cover" />
             </button>

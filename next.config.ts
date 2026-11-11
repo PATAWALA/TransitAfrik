@@ -8,9 +8,12 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    remotePatterns: supabaseHost
-      ? [{ protocol: "https", hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
-      : [],
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com" },
+      ...(supabaseHost
+        ? [{ protocol: "https" as const, hostname: supabaseHost, pathname: "/storage/v1/object/public/**" }]
+        : []),
+    ],
   },
   async redirects() {
     return [{ source: "/services", destination: "/estimation", permanent: true }];

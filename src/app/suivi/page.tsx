@@ -15,7 +15,7 @@ export default function SuiviPage() {
         Chaque étape de votre commande est communiquée en direct sur WhatsApp.
       </PageHero>
       <div className="mx-auto max-w-2xl px-4 py-12">
-        <div className="border border-slate-800 bg-surface p-8">
+        <div className="rounded-2xl border border-slate-800 bg-surface p-8">
           <ol className="space-y-5">
             {[
               ["Commande confirmée", "Votre devis est validé et votre commande lancée."],
@@ -24,7 +24,7 @@ export default function SuiviPage() {
               ["Livraison", "Remise à destination."],
             ].map(([t, d], i) => (
               <li key={t} className="flex gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center bg-brand-red font-bold">{i + 1}</span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-brand-red font-bold">{i + 1}</span>
                 <div>
                   <p className="font-bold uppercase tracking-wide">{t}</p>
                   <p className="text-sm text-slate-400">{d}</p>

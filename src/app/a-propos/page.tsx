@@ -32,7 +32,7 @@ export default function AboutPage() {
           ["Suivi en direct", "Un interlocuteur unique et des nouvelles à chaque étape sur WhatsApp."],
           ["De bout en bout", "Achat, expédition, douane et livraison : nous gérons tout."],
         ].map(([t, d]) => (
-          <div key={t} className="border border-slate-800 bg-surface p-6">
+          <div key={t} className="rounded-2xl border border-slate-800 bg-surface p-6">
             <h3 className="font-display text-2xl font-bold uppercase text-brand-red">{t}</h3>
             <p className="mt-2 text-sm text-slate-300">{d}</p>
           </div>
@@ -44,9 +44,9 @@ export default function AboutPage() {
           <h2 className="mb-6 font-display text-4xl font-extrabold uppercase">Notre équipe</h2>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {team.map((m) => (
-              <div key={m.name} className="border border-slate-800 bg-surface p-4">
+              <div key={m.name} className="rounded-2xl border border-slate-800 bg-surface p-4">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                {m.photo && <img src={m.photo} alt={m.name} className="mb-3 aspect-square w-full object-cover" />}
+                {m.photo && <img src={m.photo} alt={m.name} className="mb-3 aspect-square w-full rounded-xl object-cover" />}
                 <p className="font-bold">{m.name}</p>
                 <p className="text-sm text-slate-400">{m.role}</p>
               </div>
@@ -58,7 +58,7 @@ export default function AboutPage() {
       <section className="border-t border-slate-800 bg-surface/50 py-14">
         <div className="mx-auto max-w-3xl px-4">
           <h2 className="mb-6 font-display text-4xl font-extrabold uppercase">Questions fréquentes</h2>
-          <div className="divide-y divide-slate-800 border border-slate-800 bg-surface">
+          <div className="divide-y divide-slate-800 rounded-2xl border border-slate-800 bg-surface">
             {faq.map(([q, a]) => (
               <details key={q} className="group p-5">
                 <summary className="cursor-pointer list-none font-bold flex justify-between gap-4">

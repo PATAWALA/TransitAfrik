@@ -27,7 +27,7 @@ export function Header() {
             alt={`Logo ${BRAND.name}`}
             width={44}
             height={44}
-            className="h-11 w-11 object-cover"
+            className="h-11 w-11 rounded-xl object-cover"
             priority
           />
           <span className="font-display text-2xl font-extrabold uppercase tracking-wide leading-none">

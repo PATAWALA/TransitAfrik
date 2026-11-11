@@ -51,19 +51,19 @@ Destination : ${g.destination || "—"}`;
 
   return (
     <div>
-      <div className="grid grid-cols-2 border border-slate-800">
+      <div className="mb-3 grid grid-cols-2 gap-3">
         {([["vehicule", "Véhicule", Car], ["marchandise", "Marchandise", Package]] as const).map(([k, label, Icon]) => (
           <button
             key={k}
             onClick={() => setTab(k)}
-            className={`flex items-center justify-center gap-2 py-4 text-sm font-bold uppercase tracking-wider ${tab === k ? "bg-brand-red text-white" : "bg-surface text-slate-300 hover:text-white"}`}
+            className={`flex items-center justify-center gap-2 rounded-2xl py-4 text-sm font-bold uppercase tracking-wider ${tab === k ? "bg-brand-red text-white" : "bg-surface text-slate-300 hover:text-white"}`}
           >
             <Icon size={18} /> {label}
           </button>
         ))}
       </div>
 
-      <div className="border border-t-0 border-slate-800 bg-surface p-6">
+      <div className="rounded-2xl border border-slate-800 bg-surface p-6">
         {tab === "vehicule" ? (
           <form onSubmit={(e) => e.preventDefault()} className="grid gap-4 sm:grid-cols-2">
             <p className="text-sm text-slate-400 sm:col-span-2">
@@ -81,7 +81,7 @@ Destination : ${g.destination || "—"}`;
             <input className="field" type="number" min={0} placeholder="Budget véhicule (USD)" value={v.budget} onChange={(e) => setV({ ...v, budget: e.target.value })} />
             <input className="field sm:col-span-2" placeholder="Pays / ville de destination" value={v.destination} onChange={(e) => setV({ ...v, destination: e.target.value })} />
             {vehicleEstimate && (
-              <p className="sm:col-span-2 border border-brand-yellow/50 p-3 text-sm">
+              <p className="sm:col-span-2 rounded-2xl border border-brand-yellow/50 p-3 text-sm">
                 Estimation indicative : douane ≈ <b>{Math.round(vehicleEstimate.customs)} USD</b> · transport ≈ <b>{vehicleEstimate.transport} USD</b>. Devis final confirmé sur WhatsApp.
               </p>
             )}
@@ -104,7 +104,7 @@ Destination : ${g.destination || "—"}`;
             </select>
             <input className="field" placeholder="Pays / ville de destination" value={g.destination} onChange={(e) => setG({ ...g, destination: e.target.value })} />
             {goodsEstimate != null && (
-              <p className="sm:col-span-2 border border-brand-yellow/50 p-3 text-sm">
+              <p className="sm:col-span-2 rounded-2xl border border-brand-yellow/50 p-3 text-sm">
                 Estimation indicative : <b>≈ {Math.round(goodsEstimate)} USD</b>. Devis final confirmé sur WhatsApp.
               </p>
             )}

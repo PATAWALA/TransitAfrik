@@ -136,9 +136,9 @@ export function ListingForm({ listing }: { listing?: Listing }) {
         {images.length > 0 && (
           <ul className="mt-3 grid grid-cols-3 gap-3 sm:grid-cols-4">
             {images.map((src, i) => (
-              <li key={src} className="border border-slate-800 bg-surface">
+              <li key={src} className="overflow-hidden rounded-2xl border border-slate-800 bg-surface">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="aspect-square w-full object-cover" />
+                <img src={src} alt="" className="aspect-square w-full rounded-t-2xl object-cover" />
                 <div className="flex justify-between p-1 text-xs">
                   <button type="button" disabled={i === 0} onClick={() => move(i, i - 1)} className="px-2 disabled:opacity-30">←</button>
                   <button type="button" onClick={() => setImages((p) => p.filter((_, k) => k !== i))} className="px-2 text-red-400">✕</button>

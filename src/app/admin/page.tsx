@@ -22,15 +22,15 @@ export default async function AdminPage() {
       </div>
 
       {!isDbConfigured() && (
-        <p className="mb-6 border border-brand-yellow p-4 text-sm">
+        <p className="mb-6 rounded-2xl border border-brand-yellow p-4 text-sm">
           Base de données non configurée : ajoutez <code>NEXT_PUBLIC_SUPABASE_URL</code>, <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> et <code>SUPABASE_SERVICE_ROLE_KEY</code> dans Vercel (voir README).
         </p>
       )}
 
       {items.length === 0 ? (
-        <p className="border border-dashed border-slate-700 p-10 text-center text-slate-400">Aucune annonce. Créez la première !</p>
+        <p className="rounded-2xl border border-dashed border-slate-700 p-10 text-center text-slate-400">Aucune annonce. Créez la première !</p>
       ) : (
-        <ul className="divide-y divide-slate-800 border border-slate-800 bg-surface">
+        <ul className="divide-y divide-slate-800 rounded-2xl border border-slate-800 bg-surface">
           {items.map((l) => (
             <li key={l.id} className="flex flex-col gap-3 p-4 md:flex-row md:items-center md:justify-between">
               <div className="min-w-0">

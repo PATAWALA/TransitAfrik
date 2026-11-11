@@ -4,6 +4,7 @@ import { ArrowRight, Car, ClipboardCheck, MessageCircle, Package, Plane, Search,
 import { ListingCard } from "@/components/ListingCard";
 import { getListings } from "@/lib/db";
 import { BRAND, waLink } from "@/lib/brand";
+import { IMG } from "@/lib/images";
 
 const steps = [
   { icon: Search, title: "Vous choisissez", text: "Un véhicule du catalogue, une marchandise, ou une demande sur mesure." },
@@ -20,8 +21,9 @@ export default async function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-slate-800">
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-bg-dark to-bg-dark" />
-        <div className="absolute -right-32 -top-32 h-96 w-96 bg-brand-red/20 blur-3xl" />
+        <Image src={IMG.heroShip} alt="" fill priority sizes="100vw" className="object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg-dark via-bg-dark/90 to-brand-navy/60" />
+        
         <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 md:grid-cols-5 md:py-24">
           <div className="md:col-span-3">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-brand-yellow">
@@ -39,7 +41,7 @@ export default async function Home() {
             </div>
           </div>
           <div className="hidden md:col-span-2 md:flex md:justify-end">
-            <Image src="/images/logo.jpeg" alt={`Logo ${BRAND.name}`} width={360} height={360} priority className="h-72 w-72 border border-slate-700 object-cover lg:h-80 lg:w-80" />
+            <Image src="/images/logo.jpeg" alt={`Logo ${BRAND.name}`} width={360} height={360} priority className="h-72 w-72 rounded-2xl border border-slate-700 object-cover lg:h-80 lg:w-80" />
           </div>
         </div>
       </section>
@@ -68,7 +70,9 @@ export default async function Home() {
           <h2 className="mt-2 font-display text-4xl font-extrabold uppercase md:text-5xl">Deux types de commande, des devis clairs</h2>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          <article className="border border-slate-800 bg-surface p-7">
+          <article className="overflow-hidden rounded-2xl border border-slate-800 bg-surface">
+            <div className="relative h-56"><Image src={IMG.vehicle} alt="Véhicule à importer" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" /></div>
+            <div className="p-7">
             <Car className="text-brand-red" size={36} />
             <h3 className="mt-4 font-display text-3xl font-bold uppercase">Véhicules</h3>
             <p className="mt-2 text-slate-400">Choisissez dans notre catalogue ou demandez le modèle que vous voulez. Vous recevez deux devis :</p>
@@ -77,8 +81,11 @@ export default async function Home() {
               <li className="flex gap-2"><Truck size={18} className="shrink-0 text-brand-red" /> <span><b>Transport</b> : jusqu&apos;à votre destination</span></li>
             </ul>
             <Link href="/vehicules" className="btn-red mt-6">Parcourir les véhicules</Link>
+            </div>
           </article>
-          <article className="border border-slate-800 bg-surface p-7">
+          <article className="overflow-hidden rounded-2xl border border-slate-800 bg-surface">
+            <div className="relative h-56"><Image src={IMG.goods} alt="Marchandises en entrepôt" fill sizes="(min-width:768px) 50vw, 100vw" className="object-cover" /><div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" /></div>
+            <div className="p-7">
             <Package className="text-brand-red" size={36} />
             <h3 className="mt-4 font-display text-3xl font-bold uppercase">Marchandises</h3>
             <p className="mt-2 text-slate-400">Électronique, textile, matériel… Deux options de transport, tarifées selon le poids :</p>
@@ -87,6 +94,7 @@ export default async function Home() {
               <li className="flex gap-2"><Plane size={18} className="shrink-0 text-brand-red" /> <span><b>Aérien</b> : pour l&apos;urgent et le précieux</span></li>
             </ul>
             <Link href="/marchandises" className="btn-red mt-6">Voir les marchandises</Link>
+            </div>
           </article>
         </div>
       </section>
@@ -111,7 +119,7 @@ export default async function Home() {
         <h2 className="mb-10 font-display text-4xl font-extrabold uppercase md:text-5xl">Comment ça marche</h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
-            <div key={s.title} className="relative border border-slate-800 bg-surface p-6">
+            <div key={s.title} className="relative rounded-2xl border border-slate-800 bg-surface p-6">
               <span className="absolute right-4 top-3 font-display text-5xl font-extrabold text-slate-800">{i + 1}</span>
               <s.icon className="text-brand-red" size={28} />
               <h3 className="mt-4 font-display text-xl font-bold uppercase">{s.title}</h3>
