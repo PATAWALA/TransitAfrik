@@ -1,17 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Car, ClipboardCheck, MessageCircle, Package, Plane, Search, Ship, ShieldCheck, Truck, Wallet } from "lucide-react";
+import { ArrowRight, Car, Package, Plane, Ship, ShieldCheck, Truck } from "lucide-react";
 import { ListingCard } from "@/components/ListingCard";
+import { OrderSteps } from "@/components/OrderSteps";
 import { getListings } from "@/lib/db";
 import { BRAND, waLink } from "@/lib/brand";
 import { IMG } from "@/lib/images";
-
-const steps = [
-  { icon: Search, title: "Vous choisissez", text: "Un véhicule du catalogue, une marchandise, ou une demande sur mesure." },
-  { icon: Wallet, title: "Vous recevez vos devis", text: "Douane et transport pour un véhicule. Maritime et aérien pour une marchandise." },
-  { icon: ClipboardCheck, title: "Nous gérons tout", text: "Achat, expédition et formalités : un seul interlocuteur." },
-  { icon: MessageCircle, title: "Vous suivez en direct", text: "Chaque étape vous est communiquée sur WhatsApp." },
-];
 
 export default async function Home() {
   const all = await getListings();
@@ -116,17 +110,8 @@ export default async function Home() {
 
       {/* COMMENT CA MARCHE */}
       <section className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-        <h2 className="mb-10 font-display text-4xl font-extrabold uppercase md:text-5xl">Comment ça marche</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((s, i) => (
-            <div key={s.title} className="relative rounded-2xl border border-slate-800 bg-surface p-6">
-              <span className="absolute right-4 top-3 font-display text-5xl font-extrabold text-slate-800">{i + 1}</span>
-              <s.icon className="text-brand-red" size={28} />
-              <h3 className="mt-4 font-display text-xl font-bold uppercase">{s.title}</h3>
-              <p className="mt-2 text-sm text-slate-400">{s.text}</p>
-            </div>
-          ))}
-        </div>
+        <h2 className="mb-10 font-display text-4xl font-extrabold uppercase md:text-5xl">Comment passer commande</h2>
+        <OrderSteps />
       </section>
 
       {/* COMMUNAUTE */}

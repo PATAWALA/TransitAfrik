@@ -8,6 +8,11 @@ export const IMG = {
   goodsHero: u("1553413077-190dd305871c", 1800),
   vehicleBlue: u("1552519507-da3b142c6e3d"),
   vehicleSmall: u("1549317661-bd32c8ce0db2"),
+  camry: u("1621007947382-bb3c3994e3fb"),
+  mercedes: u("1590362891991-f776e747a588"),
+  hyundai: u("1619767886558-efdc259cde1a"),
+  bmw: u("1580273916550-e323be2ae537"),
+  audi: u("1606664515524-ed2f786a0bd6"),
   air: u("1436491865332-7a61a109cc05"),
   truck: u("1601584115197-04ecc0da31d7"),
 };

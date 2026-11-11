@@ -54,6 +54,7 @@ export function ListingCard({ listing: l }: { listing: Listing }) {
         <p className={`mt-auto pt-2 text-lg font-black ${sold ? "text-slate-500 line-through" : "text-brand-red"}`}>
           {formatPrice(l.price, l.currency)}
         </p>
+        {sold && <p className="text-xs font-bold uppercase tracking-wider text-brand-yellow">Vendu · Vous voulez le même ?</p>}
       </div>
     </Link>
   );

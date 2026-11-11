@@ -123,8 +123,36 @@ export function ListingForm({ listing }: { listing?: Listing }) {
         <label className="flex items-center gap-2 pt-6 text-sm">
           <input type="checkbox" name="featured" defaultChecked={listing?.featured} /> Mettre en avant
         </label>
+        {kind === "vehicle" && (
+          <>
+            <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400">Couleur
+              <input name="color" defaultValue={listing?.color ?? ""} className="field" placeholder="Marron (couleur d'origine)" />
+            </label>
+            <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400">État
+              <input name="condition" defaultValue={listing?.condition ?? ""} className="field" placeholder="Parfaite" />
+            </label>
+          </>
+        )}
+        <label className="flex items-center gap-2 pt-6 text-sm">
+          <input type="checkbox" name="negotiable" defaultChecked={listing?.negotiable} /> Négociation possible
+        </label>
+        <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400 sm:col-span-2">Équipements (un par ligne)
+          <textarea name="features" rows={5} defaultValue={listing?.features?.join("\n")} className="field" placeholder={"Intérieur cuir complet\nToit panoramique\nHaut-parleurs JBL"} />
+        </label>
         <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400 sm:col-span-2">Description
           <textarea name="description" rows={6} defaultValue={listing?.description} className="field" placeholder="État, options, historique…" />
+        </label>
+        <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400 sm:col-span-2">Modalités de paiement
+          <input name="payment_terms" defaultValue={listing?.payment_terms ?? ""} className="field" placeholder="Paiement en tranches sur un an après réception" />
+        </label>
+        <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400 sm:col-span-2">Livraison & dédouanement
+          <input name="delivery_info" defaultValue={listing?.delivery_info ?? ""} className="field" placeholder="Au port de votre préférence" />
+        </label>
+        <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400">Avance / acompte
+          <input name="deposit" defaultValue={listing?.deposit ?? ""} className="field" placeholder="300 000 FCFA" />
+        </label>
+        <label className="space-y-1 text-xs font-bold uppercase tracking-wider text-slate-400">Délai de livraison
+          <input name="delivery_delay" defaultValue={listing?.delivery_delay ?? ""} className="field" placeholder="17 à 23 jours après le départ du navire" />
         </label>
       </div>
 

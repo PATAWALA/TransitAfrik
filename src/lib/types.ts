@@ -17,6 +17,14 @@ export interface Listing {
   origin: string | null;
   category: string | null;
   description: string;
+  color: string | null;
+  condition: string | null;
+  features: string[];
+  negotiable: boolean;
+  payment_terms: string | null;
+  delivery_info: string | null;
+  deposit: string | null;
+  delivery_delay: string | null;
   images: string[];
   featured: boolean;
   created_at: string;

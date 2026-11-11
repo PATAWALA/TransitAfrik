@@ -18,68 +18,101 @@ const base = {
   category: null,
   brand: null,
   year: null,
+  color: null,
+  condition: null,
+  features: [] as string[],
+  negotiable: false,
+  payment_terms: null,
+  delivery_info: null,
+  deposit: null,
+  delivery_delay: null,
+};
+
+const terms = {
+  payment_terms: "Paiement en tranches accepté sur une période d'un an après réception du véhicule.",
+  delivery_info: "Livraison et dédouanement au port de votre préférence.",
+  deposit: "300 000 FCFA — permet d'établir le contrat de vente, de vous envoyer un code de suivi et d'acheminer le véhicule.",
+  delivery_delay: "17 à 23 jours à partir du départ du navire.",
 };
 
 export const DEMO_LISTINGS: Listing[] = [
   {
-    ...base, id: "demo-1", kind: "vehicle", slug: "exemple-porsche-panamera-turbo",
-    title: "Porsche Panamera Turbo", brand: "Porsche", year: 2018, mileage: 54000, fuel: "Essence",
-    transmission: "Automatique", origin: "USA", price: 58000, status: "available", featured: true,
-    images: [IMG.vehicle], created_at: "2026-11-08T10:00:00Z",
+    ...base, ...terms, id: "demo-1", kind: "vehicle", slug: "exemple-toyota-camry-2018",
+    title: "Toyota Camry 2018 (XV70)", brand: "Toyota Camry 70", year: 2018, mileage: 97000,
+    color: "Marron (couleur d'origine)", condition: "Parfaite", fuel: "Essence", transmission: "Automatique",
+    origin: "Chine", price: 3300, negotiable: true, status: "available", featured: true,
+    images: [IMG.camry], created_at: "2026-11-10T10:00:00Z",
     description:
-      "Exemple de fiche véhicule.\n\nMotorisation : V8 biturbo 4.0 L · Transmission intégrale\nIntérieur cuir, toit panoramique, caméra de recul, sièges chauffants.\nHistorique d'entretien complet. Prêt à l'export.",
+      "Découvrez la Toyota Camry 2018 (code châssis XV70), le modèle qui marque le lancement de la huitième génération de la célèbre berline intermédiaire japonaise.\n\nRupture stylistique majeure : design beaucoup plus dynamique, centre de gravité abaissé et nouvelle plateforme modulaire (TNGA) qui améliore nettement la tenue de route. Idéale pour sa durabilité et sa résistance.\n\nNe nécessite aucun investissement : il suffit d'entrer et de rouler.",
+    features: ["Intérieur cuir complet", "Accès par déblocage", "Toit panoramique", "Haut-parleurs JBL", "Sièges chauffants", "Grand moniteur", "Parcours d'origine : 97 000 km", "Couleur d'origine"],
   },
   {
-    ...base, id: "demo-2", kind: "vehicle", slug: "exemple-chevrolet-camaro-zl1",
-    title: "Chevrolet Camaro ZL1", brand: "Chevrolet", year: 2019, mileage: 31000, fuel: "Essence",
-    transmission: "Automatique", origin: "USA", price: 46500, status: "reserved", featured: true,
-    images: [IMG.vehicleHero], created_at: "2026-11-05T10:00:00Z",
-    description: "Exemple de véhicule réservé.\n\nV8 6.2 L compressé · Échappement sport · Jantes 20 pouces.",
+    ...base, ...terms, id: "demo-2", kind: "vehicle", slug: "exemple-hyundai-accent-2019",
+    title: "Hyundai Accent", brand: "Hyundai Accent", year: 2019, mileage: 64000, color: "Noir", condition: "Très bon état",
+    fuel: "Essence", transmission: "Automatique", origin: "Chine", price: 2400, negotiable: true,
+    status: "available", images: [IMG.hyundai], created_at: "2026-11-08T10:00:00Z",
+    description: "Exemple de fiche véhicule : berline économique et fiable, idéale pour la ville.",
+    features: ["Climatisation", "Écran multimédia", "Caméra de recul", "Bluetooth"],
   },
   {
-    ...base, id: "demo-3", kind: "vehicle", slug: "exemple-chevrolet-camaro-ss",
-    title: "Chevrolet Camaro SS", brand: "Chevrolet", year: 2017, mileage: 72000, fuel: "Essence",
-    transmission: "Manuelle", origin: "Canada", price: 27800, status: "available",
-    images: [u1()], created_at: "2026-11-01T10:00:00Z",
-    description: "Exemple de fiche véhicule.\n\nV8 6.2 L · Boîte manuelle 6 rapports · Toit ouvrant · Bluetooth.",
+    ...base, ...terms, id: "demo-3", kind: "vehicle", slug: "exemple-porsche-panamera-turbo",
+    title: "Porsche Panamera Turbo", brand: "Porsche", year: 2018, mileage: 54000, color: "Noir", condition: "Excellente",
+    fuel: "Essence", transmission: "Automatique", origin: "USA", price: 58000, status: "available", featured: true,
+    images: [IMG.vehicle], created_at: "2026-11-06T10:00:00Z",
+    description: "Exemple de fiche véhicule haut de gamme.\n\nMotorisation V8 biturbo 4.0 L, transmission intégrale.",
+    features: ["Intérieur cuir", "Toit panoramique", "Caméra de recul", "Sièges chauffants"],
   },
   {
-    ...base, id: "demo-4", kind: "vehicle", slug: "exemple-fiat-500-spiaggina",
-    title: "Fiat 500 Spiaggina", brand: "Fiat", year: 2020, mileage: 18000, fuel: "Essence",
-    transmission: "Automatique", origin: "Europe", price: 9800, status: "sold",
-    images: [u2()], created_at: "2026-10-20T10:00:00Z",
-    description: "Exemple de véhicule vendu : il reste visible, grisé, comme preuve d'activité.",
+    ...base, ...terms, id: "demo-4", kind: "vehicle", slug: "exemple-mercedes-gle-coupe",
+    title: "Mercedes-Benz GLE Coupé", brand: "Mercedes-Benz", year: 2017, mileage: 88000, color: "Blanc", condition: "Très bon état",
+    fuel: "Diesel", transmission: "Automatique", origin: "Dubaï", price: 31500, status: "reserved",
+    images: [IMG.mercedes], created_at: "2026-11-02T10:00:00Z",
+    description: "Exemple de véhicule réservé : en attente de confirmation de l'acompte.",
+    features: ["Intérieur cuir", "Jantes alliage", "Éclairage d'ambiance"],
   },
   {
-    ...base, id: "demo-5", kind: "goods", slug: "exemple-conteneur-20-pieds",
+    ...base, ...terms, id: "demo-5", kind: "vehicle", slug: "exemple-bmw-m4",
+    title: "BMW M4 Coupé", brand: "BMW", year: 2016, mileage: 76000, color: "Gris", condition: "Excellente",
+    fuel: "Essence", transmission: "Automatique", origin: "Europe", price: 38900, status: "sold",
+    images: [IMG.bmw], created_at: "2026-10-22T10:00:00Z",
+    description: "Exemple de véhicule déjà vendu : il reste visible sur le site comme preuve d'activité. Le visiteur peut demander le même.",
+    features: ["Pack sport", "Intérieur cuir", "Phares LED"],
+  },
+  {
+    ...base, ...terms, id: "demo-6", kind: "vehicle", slug: "exemple-audi-rs6",
+    title: "Audi RS6 Avant", brand: "Audi", year: 2015, mileage: 102000, color: "Noir", condition: "Très bon état",
+    fuel: "Essence", transmission: "Automatique", origin: "Europe", price: 42000, status: "sold",
+    images: [IMG.audi], created_at: "2026-10-12T10:00:00Z",
+    description: "Exemple de véhicule déjà vendu.",
+    features: ["Quattro", "Intérieur cuir", "Échappement sport"],
+  },
+  {
+    ...base, id: "demo-7", kind: "goods", slug: "exemple-conteneur-20-pieds",
     title: "Conteneur 20 pieds — marchandises diverses", category: "Matériel industriel", origin: "Chine",
-    price: null, status: "available", featured: true, images: [IMG.heroShip], created_at: "2026-11-07T10:00:00Z",
+    price: null, status: "available", featured: true, images: [IMG.heroShip], created_at: "2026-11-09T10:00:00Z",
     description:
-      "Exemple de fiche marchandise.\n\nTransport maritime en conteneur complet ou en groupage.\nDevis selon le poids et le volume. Dédouanement géré par nos équipes.",
+      "Exemple de fiche marchandise.\n\nTransport maritime en conteneur complet ou en groupage. Devis selon le poids et le volume. Dédouanement géré par nos équipes.",
+    features: ["Transport maritime", "Dédouanement inclus", "Suivi WhatsApp"],
   },
   {
-    ...base, id: "demo-6", kind: "goods", slug: "exemple-colis-fret-aerien",
+    ...base, id: "demo-8", kind: "goods", slug: "exemple-colis-fret-aerien",
     title: "Colis express — fret aérien", category: "Électronique", origin: "Dubaï",
-    price: null, status: "available", images: [IMG.air], created_at: "2026-11-03T10:00:00Z",
+    price: null, status: "available", images: [IMG.air], created_at: "2026-11-04T10:00:00Z",
     description: "Exemple de fiche marchandise.\n\nIdéal pour l'urgent et les produits de valeur (téléphones, accessoires). Tarif au kilo.",
+    features: ["Transport aérien", "Tarif selon le poids", "Suivi WhatsApp"],
   },
   {
-    ...base, id: "demo-7", kind: "goods", slug: "exemple-palettes-pieces-detachees",
+    ...base, id: "demo-9", kind: "goods", slug: "exemple-palettes-pieces-detachees",
     title: "Palettes de pièces détachées", category: "Pièces auto", origin: "Turquie",
     price: null, status: "available", images: [IMG.goods], created_at: "2026-10-28T10:00:00Z",
     description: "Exemple de fiche marchandise.\n\nGroupage depuis Istanbul. Transport maritime ou aérien selon le poids.",
+    features: ["Groupage Istanbul", "Maritime ou aérien"],
   },
   {
-    ...base, id: "demo-8", kind: "goods", slug: "exemple-lot-textile-stock",
-    title: "Stock en entrepôt — lot grossiste", category: "Textile & mode", origin: "Chine",
+    ...base, id: "demo-10", kind: "goods", slug: "exemple-lot-grossiste",
+    title: "Lot grossiste — stock en entrepôt", category: "Textile & mode", origin: "Chine",
     price: null, status: "sold", images: [IMG.goodsHero], created_at: "2026-10-15T10:00:00Z",
-    description: "Exemple de marchandise déjà vendue.",
+    description: "Exemple de marchandise déjà vendue : le visiteur peut demander le même lot.",
+    features: ["Stock livré", "Dédouanement inclus"],
   },
 ];
-
-function u1() {
-  return IMG.vehicleBlue;
-}
-function u2() {
-  return IMG.vehicleSmall;
-}

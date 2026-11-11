@@ -15,11 +15,30 @@ create table if not exists public.listings (
   transmission text,
   origin text,
   category text,
+  color text,
+  condition text,
+  features text[] not null default '{}',
+  negotiable boolean not null default false,
+  payment_terms text,
+  delivery_info text,
+  deposit text,
+  delivery_delay text,
   description text not null default '',
   images text[] not null default '{}',
   featured boolean not null default false,
   created_at timestamptz not null default now()
 );
+
+-- Si la table existait déjà (ancienne version), ajoute les nouvelles colonnes :
+alter table public.listings
+  add column if not exists color text,
+  add column if not exists condition text,
+  add column if not exists features text[] not null default '{}',
+  add column if not exists negotiable boolean not null default false,
+  add column if not exists payment_terms text,
+  add column if not exists delivery_info text,
+  add column if not exists deposit text,
+  add column if not exists delivery_delay text;
 
 create index if not exists listings_kind_created on public.listings (kind, created_at desc);
 
